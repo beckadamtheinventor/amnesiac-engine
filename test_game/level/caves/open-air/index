@@ -22,5 +22,5 @@ tex:46,dark-rock.png
 path:$LEVEL/caves/open-air
 map:open-air.csv
 start:4,4
-solid:13,16,24,26,29,31,37,45,46
+solid:-1,13,16,24,26,29,31,37,45,46
 script:main-script.py

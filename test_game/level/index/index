@@ -64,7 +64,7 @@ tex:264,sprite_086.png
 tex:265,sprite_087.png
 tex:266,sprite_088.png
 tex:267,sprite_089.png
-solid:13,16,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46
+solid:-1,13,16,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46
 path:$LEVEL/index
 map:nexus_main.csv
 map:nexus_text.csv

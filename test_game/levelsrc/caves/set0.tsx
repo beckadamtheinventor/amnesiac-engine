@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset name="set0" tilewidth="32" tileheight="32" tilecount="192" columns="0">
+<tileset version="1.4" tiledversion="1.4.2" name="set0" tilewidth="32" tileheight="32" tilecount="192" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="10">
   <image width="32" height="32" source="../../gfx/tex/tex_None.png"/>
@@ -95,199 +95,199 @@
   <image width="32" height="32" source="../../gfx/tex/dark-rock.png"/>
  </tile>
  <tile id="47">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-0.png"/>
+  <image source="../../gfx/tex/dni/dni-0.png"/>
  </tile>
  <tile id="48">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-1.png"/>
+  <image source="../../gfx/tex/dni/dni-1.png"/>
  </tile>
  <tile id="49">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-2.png"/>
+  <image source="../../gfx/tex/dni/dni-2.png"/>
  </tile>
  <tile id="50">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-3.png"/>
+  <image source="../../gfx/tex/dni/dni-3.png"/>
  </tile>
  <tile id="51">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-4.png"/>
+  <image source="../../gfx/tex/dni/dni-4.png"/>
  </tile>
  <tile id="52">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-5.png"/>
+  <image source="../../gfx/tex/dni/dni-5.png"/>
  </tile>
  <tile id="53">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-6.png"/>
+  <image source="../../gfx/tex/dni/dni-6.png"/>
  </tile>
  <tile id="54">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-7.png"/>
+  <image source="../../gfx/tex/dni/dni-7.png"/>
  </tile>
  <tile id="55">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-8.png"/>
+  <image source="../../gfx/tex/dni/dni-8.png"/>
  </tile>
  <tile id="56">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-9.png"/>
+  <image source="../../gfx/tex/dni/dni-9.png"/>
  </tile>
  <tile id="57">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-10.png"/>
+  <image source="../../gfx/tex/dni/dni-10.png"/>
  </tile>
  <tile id="58">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-11.png"/>
+  <image source="../../gfx/tex/dni/dni-11.png"/>
  </tile>
  <tile id="59">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-12.png"/>
+  <image source="../../gfx/tex/dni/dni-12.png"/>
  </tile>
  <tile id="60">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-13.png"/>
+  <image source="../../gfx/tex/dni/dni-13.png"/>
  </tile>
  <tile id="61">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-14.png"/>
+  <image source="../../gfx/tex/dni/dni-14.png"/>
  </tile>
  <tile id="62">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-15.png"/>
+  <image source="../../gfx/tex/dni/dni-15.png"/>
  </tile>
  <tile id="63">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-16.png"/>
+  <image source="../../gfx/tex/dni/dni-16.png"/>
  </tile>
  <tile id="64">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-17.png"/>
+  <image source="../../gfx/tex/dni/dni-17.png"/>
  </tile>
  <tile id="65">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-18.png"/>
+  <image source="../../gfx/tex/dni/dni-18.png"/>
  </tile>
  <tile id="66">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-19.png"/>
+  <image source="../../gfx/tex/dni/dni-19.png"/>
  </tile>
  <tile id="67">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-20.png"/>
+  <image source="../../gfx/tex/dni/dni-20.png"/>
  </tile>
  <tile id="68">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-21.png"/>
+  <image source="../../gfx/tex/dni/dni-21.png"/>
  </tile>
  <tile id="69">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-22.png"/>
+  <image source="../../gfx/tex/dni/dni-22.png"/>
  </tile>
  <tile id="70">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-23.png"/>
+  <image source="../../gfx/tex/dni/dni-23.png"/>
  </tile>
  <tile id="71">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-24.png"/>
+  <image source="../../gfx/tex/dni/dni-24.png"/>
  </tile>
  <tile id="72">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-25.png"/>
+  <image source="../../gfx/tex/dni/dni-25.png"/>
  </tile>
  <tile id="73">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-25-a.png"/>
+  <image source="../../gfx/tex/dni/dni-25-a.png"/>
  </tile>
  <tile id="74">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-25-b.png"/>
+  <image source="../../gfx/tex/dni/dni-25-b.png"/>
  </tile>
  <tile id="75">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-ae.png"/>
+  <image source="../../gfx/tex/dni/dni-ae.png"/>
  </tile>
  <tile id="76">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-ah.png"/>
+  <image source="../../gfx/tex/dni/dni-ah.png"/>
  </tile>
  <tile id="77">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-ai.png"/>
+  <image source="../../gfx/tex/dni/dni-ai.png"/>
  </tile>
  <tile id="78">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-apostrophe.png"/>
+  <image source="../../gfx/tex/dni/dni-apostrophe.png"/>
  </tile>
  <tile id="79">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-ay.png"/>
+  <image source="../../gfx/tex/dni/dni-ay.png"/>
  </tile>
  <tile id="80">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-b.png"/>
+  <image source="../../gfx/tex/dni/dni-b.png"/>
  </tile>
  <tile id="81">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-ch.png"/>
+  <image source="../../gfx/tex/dni/dni-ch.png"/>
  </tile>
  <tile id="82">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-d.png"/>
+  <image source="../../gfx/tex/dni/dni-d.png"/>
  </tile>
  <tile id="83">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-dh.png"/>
+  <image source="../../gfx/tex/dni/dni-dh.png"/>
  </tile>
  <tile id="84">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-ee.png"/>
+  <image source="../../gfx/tex/dni/dni-ee.png"/>
  </tile>
  <tile id="85">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-eh.png"/>
+  <image source="../../gfx/tex/dni/dni-eh.png"/>
  </tile>
  <tile id="86">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-f.png"/>
+  <image source="../../gfx/tex/dni/dni-f.png"/>
  </tile>
  <tile id="87">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-g.png"/>
+  <image source="../../gfx/tex/dni/dni-g.png"/>
  </tile>
  <tile id="88">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-h.png"/>
+  <image source="../../gfx/tex/dni/dni-h.png"/>
  </tile>
  <tile id="89">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-I.png"/>
+  <image source="../../gfx/tex/dni/dni-I.png"/>
  </tile>
  <tile id="90">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-ih.png"/>
+  <image source="../../gfx/tex/dni/dni-ih.png"/>
  </tile>
  <tile id="91">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-j.png"/>
+  <image source="../../gfx/tex/dni/dni-j.png"/>
  </tile>
  <tile id="92">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-k.png"/>
+  <image source="../../gfx/tex/dni/dni-k.png"/>
  </tile>
  <tile id="93">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-m.png"/>
+  <image source="../../gfx/tex/dni/dni-m.png"/>
  </tile>
  <tile id="94">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-n.png"/>
+  <image source="../../gfx/tex/dni/dni-n.png"/>
  </tile>
  <tile id="95">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-o.png"/>
+  <image source="../../gfx/tex/dni/dni-o.png"/>
  </tile>
  <tile id="96">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-oo.png"/>
+  <image source="../../gfx/tex/dni/dni-oo.png"/>
  </tile>
  <tile id="97">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-oy.png"/>
+  <image source="../../gfx/tex/dni/dni-oy.png"/>
  </tile>
  <tile id="98">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-p.png"/>
+  <image source="../../gfx/tex/dni/dni-p.png"/>
  </tile>
  <tile id="99">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-period.png"/>
+  <image source="../../gfx/tex/dni/dni-period.png"/>
  </tile>
  <tile id="100">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-r.png"/>
+  <image source="../../gfx/tex/dni/dni-r.png"/>
  </tile>
  <tile id="101">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-s.png"/>
+  <image source="../../gfx/tex/dni/dni-s.png"/>
  </tile>
  <tile id="102">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-sh.png"/>
+  <image source="../../gfx/tex/dni/dni-sh.png"/>
  </tile>
  <tile id="103">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-t.png"/>
+  <image source="../../gfx/tex/dni/dni-t.png"/>
  </tile>
  <tile id="104">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-th.png"/>
+  <image source="../../gfx/tex/dni/dni-th.png"/>
  </tile>
  <tile id="105">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-ts.png"/>
+  <image source="../../gfx/tex/dni/dni-ts.png"/>
  </tile>
  <tile id="106">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-u.png"/>
+  <image source="../../gfx/tex/dni/dni-u.png"/>
  </tile>
  <tile id="107">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-v.png"/>
+  <image source="../../gfx/tex/dni/dni-v.png"/>
  </tile>
  <tile id="108">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-w.png"/>
+  <image source="../../gfx/tex/dni/dni-w.png"/>
  </tile>
  <tile id="109">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-x.png"/>
+  <image source="../../gfx/tex/dni/dni-x.png"/>
  </tile>
  <tile id="110">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-y.png"/>
+  <image source="../../gfx/tex/dni/dni-y.png"/>
  </tile>
  <tile id="111">
-  <image width="32" height="32" source="../../gfx/tex/dni/dni-z.png"/>
+  <image source="../../gfx/tex/dni/dni-z.png"/>
  </tile>
  <tile id="209">
   <image width="32" height="32" source="../../gfx/tex/char/sprite_031.png"/>
