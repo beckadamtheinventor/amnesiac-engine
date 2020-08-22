@@ -404,7 +404,6 @@ class Model:
 
         self.image = None
         self.renderMode = 0
-        self.curlevel = 0
 
     def set_game(self, game):
         self.game = game
@@ -459,6 +458,7 @@ class Model:
             elif line.startswith("solid:"):
                 for w in line[6:].split(","):
                     self.solids.append(int(w))
+        self.targetMap(0)
 
     def add_entity(self, entity):
         self.entities.append(entity)
@@ -497,7 +497,7 @@ class Model:
         return False
 
     def setPos(self, x, y):
-        self.x = x;
+        self.x = x
         self.y = y
 
     def addEntity(self, ent):
@@ -541,7 +541,10 @@ class Model:
         return None
 
     def targetMap(self, mapno):
-        old = self.level["list"].index(self.curlevel)
+        try:
+            old = self.level["list"].index(self.curlevel)
+        except:
+            old = 0
         if mapno < len(self.level["list"]):
             self.curlevel = self.level["list"][mapno]
         else:
