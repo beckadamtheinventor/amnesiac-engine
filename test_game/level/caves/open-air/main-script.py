@@ -1,7 +1,7 @@
 
 from pyglet.window import key
 
-def main(game):
+def main():
 	model=game.model
 	player=game.player
 	x,y = model.x,model.y

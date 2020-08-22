@@ -27,7 +27,7 @@ class Ghost:
 			self.spr.image=self.img
 			self.spr.draw()
 
-def init(game):
+def init():
 	model=game.model
 	player=game.player
 	keys=game.keys
@@ -39,7 +39,7 @@ def init(game):
 	ghost.spr = pyglet.sprite.Sprite(None)
 	ghost.spr.scale=2
 
-def update(game):
+def update():
 	vx=vy=0
 	model=game.model
 	x=model.x - ghost.x
@@ -50,7 +50,4 @@ def update(game):
 	elif y<0: y=-1
 	ghost=game.vars["ghost"]
 	ghost.update(x,y)
-
-def draw(game):
-	ghost.draw()
 

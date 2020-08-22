@@ -2,3 +2,7 @@
 /indev_versions
 /captures
 /ref
+/amnesiac_engine.egg-info
+/build
+/dist
+/setup.py

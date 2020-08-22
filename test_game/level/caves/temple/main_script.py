@@ -2,7 +2,7 @@
 from pyglet.window import key
 
 
-def init(game):
+def init():
     if "entered_text" not in game.data.keys():
         game.data["entered_text"] = [0]*10
         game.data["text_cursor"] = 0
@@ -14,7 +14,7 @@ def init(game):
         game.data["text_cursor"] = 0
     game.data["spacebar_pressed"] = False
 
-def main(game):
+def main():
     x,y = game.getPos()
     if game.keys[key.SPACE]:
         if not game.data["spacebar_pressed"]:
@@ -38,13 +38,13 @@ def main(game):
                     game.data["entered_text"][game.data["text_cursor"]] = (game.data["entered_text"][game.data["text_cursor"]]-1)%27
                     changed=True
                 if changed:
-                    print_text(game, game.data["entered_text"], 10, 16)
+                    print_text(game.data["entered_text"], 10, 16)
                 game.targetMap(old_map)
     else:
         game.data["spacebar_pressed"]=False
 
 
-def print_text(game,text,x,y):
+def print_text(text,x,y):
     char_map = " ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     for i in range(10):
         game.setTile(x+i,y,0)

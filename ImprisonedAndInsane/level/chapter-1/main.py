@@ -1,6 +1,6 @@
 
 
-def init(game):
+def init():
 	if "passed_intro" in game.data:
 		if game.data["passed_intro"]:
 			return
@@ -10,7 +10,7 @@ def init(game):
 	game.data["passed_intro"]=False
 
 
-def main(game):
+def main():
 	if not game.data["passed_intro"]:
 		entity = game.loadEntity("$LEVEL/chapter-1/intro_entity.py")
 		counter = game.data["frame_counter"]
