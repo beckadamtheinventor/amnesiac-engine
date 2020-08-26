@@ -1,5 +1,6 @@
 
 from pyglet.window import key
+from amnesiac.game import game
 
 def main():
 	model=game.model

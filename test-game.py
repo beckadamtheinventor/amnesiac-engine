@@ -1,4 +1,6 @@
 #!/usr/bin/python3
-import os
-os.chdir(os.path.dirname(__file__))
-os.system("python main.py test_game")
+if __name__=='__main__':
+    import os
+    from amnesiac.engine import RunEngine
+    RunEngine(os.path.dirname(__file__)+"/test_game")
+

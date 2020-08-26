@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-import pyglet
-from amnesiac.window import *
 
-
-
-if __name__ == '__main__':
+def RunEngine(path):
+    """Start the engine, loading game from path."""
+    import pyglet
+    from amnesiac.globs import VERSION, setGamePath
+    setGamePath(path)
+    from amnesiac.window import Window
     win = Window(15 * 32, 15 * 32, caption="Amnesiac Engine " + VERSION, resizable=False)
     pyglet.app.run()

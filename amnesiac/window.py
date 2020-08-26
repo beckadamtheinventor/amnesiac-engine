@@ -5,10 +5,8 @@ from pyglet.gl import *
 from amnesiac.globs import *
 from amnesiac.player import *
 from amnesiac.model import *
-from amnesiac.script import *
-from amnesiac.entity import *
-from amnesiac.game import *
 from amnesiac.util import *
+from amnesiac.game import makeGameObject
 
 
 
@@ -34,7 +32,7 @@ class Window(pyglet.window.Window):
         self.player = Player()
         self.player.loadgame()
         self.model = Model(self.player.level)
-        self.game = Game(self.model, self.player, self.keys, self)
+        self.game = makeGameObject(self.model,self.player,self.keys,self)
         self.model.set_game(self.game)
         self.game.loadLevel(self.player.level)
 

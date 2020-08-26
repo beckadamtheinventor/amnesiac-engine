@@ -1,5 +1,6 @@
 
 from pyglet.window import key
+from amnesiac.game import game
 
 class Ghost:
 	def __init__(self):

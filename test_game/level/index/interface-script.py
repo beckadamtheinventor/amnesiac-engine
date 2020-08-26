@@ -1,5 +1,6 @@
 
 from pyglet.window import key
+from amnesiac.game import game
 
 def init():
     game.data["interface_array"] = [0]*8

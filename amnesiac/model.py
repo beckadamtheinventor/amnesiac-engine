@@ -65,7 +65,7 @@ class Model:
         else:
             self.x, self.y = self.level["start"]
         for script in self.scripts:
-            script.run_init(self.game)
+            script.run_init()
 
     def load_level(self, fname):
         try:
@@ -121,7 +121,7 @@ class Model:
 
             if not self.checkColided(vx, vy):
                 self.x, self.y = x, y
-        self.tryRunScript(x, y, keys)
+        self.runScriptMains()
         for entity in self.entities:
             entity.update(self.game)
 
@@ -202,13 +202,9 @@ class Model:
             self.curlevel = None
         return old
 
-    def tryRunScript(self, x, y, keys):
-        self.x_pos = x
-        self.y_pos = y
-        self.x_tile = int(x)
-        self.y_tile = int(y)
+    def runScriptMains(self):
         for script in self.scripts:
-            script.run_main(self.game)
+            script.run_main()
 
     def get_tex(self, fname):
         try:

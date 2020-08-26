@@ -1,7 +1,5 @@
 
 
-game = None
-
 class Game:
     """
     Main engine interface class.
@@ -240,5 +238,7 @@ class Game:
 
 
 def makeGameObject(model, player, keys, window):
+    global game
     game = Game(model, player, keys, window)
+    return game
 

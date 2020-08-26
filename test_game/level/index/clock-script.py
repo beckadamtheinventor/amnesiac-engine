@@ -1,5 +1,6 @@
 
 from pyglet.window import key
+from amnesiac.game import game
 import time,math
 
 

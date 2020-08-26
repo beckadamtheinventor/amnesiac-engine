@@ -6,3 +6,7 @@
 /build
 /dist
 /setup.py
+/build
+/amnesiac_engine.egg-info
+*.pyc
+*/__pycache__

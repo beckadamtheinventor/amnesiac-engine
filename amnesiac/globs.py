@@ -1,8 +1,9 @@
 
-GAME_FOLDER = None
-GFX_FOLDER = None
+def setGamePath(dir):
+    buildGameFolders(dir)
 
 def buildGameFolders(dir):
+    global GFX_FOLDER, GAME_FOLDER
     try:
         GAME_FOLDER = dir
     except:

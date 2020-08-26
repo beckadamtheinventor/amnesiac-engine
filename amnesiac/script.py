@@ -23,12 +23,12 @@ class Script:
         except:
             self.data = {}
 
-    def run_init(self, game):
+    def run_init(self):
         game._data[self.fname] = self.data
         self.data["_time_main"] = self.data["_time_draw"] = time.time()
-        self.run_func("init", game)
+        self.run_func("init")
 
-    def run_main(self, game):
+    def run_main(self):
         t = time.time();
         game.dt = t - self.data["_time_main"];
         self.data["_time_main"] = t
