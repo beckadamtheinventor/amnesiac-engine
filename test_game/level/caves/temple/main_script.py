@@ -23,19 +23,20 @@ def main():
             if y<=20:
                 old_map = game.targetMap(1)
                 changed=False
-                if int(x)==13:
+                pos = game.player.pos
+                if game.checkIntersectsTile(pos,(13,20)):
                     game.data["entered_text"][game.data["text_cursor"]]=0
                     changed=True
-                elif int(x)==15 and game.data["text_cursor"]>0:
+                elif game.checkIntersectsTile(pos,(15,20)) and game.data["text_cursor"]>0:
                     game.data["text_cursor"]-=1
                     changed=True
-                elif int(x)==16 and game.data["text_cursor"]<len(game.data["entered_text"])-1:
+                elif game.checkIntersectsTile(pos,(16,20)) and game.data["text_cursor"]<len(game.data["entered_text"])-1:
                     game.data["text_cursor"]+=1
                     changed=True
-                elif int(x)==17:
+                elif game.checkIntersectsTile(pos,(17,20)):
                     game.data["entered_text"][game.data["text_cursor"]] = (game.data["entered_text"][game.data["text_cursor"]]+1)%27
                     changed=True
-                elif int(x)==18:
+                elif game.checkIntersectsTile(pos,(18,20)):
                     game.data["entered_text"][game.data["text_cursor"]] = (game.data["entered_text"][game.data["text_cursor"]]-1)%27
                     changed=True
                 if changed:

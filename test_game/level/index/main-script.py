@@ -8,7 +8,7 @@ def main():
 	player=game.player
 	keys=game.keys
 	x,y = model.x,model.y
-	if int(x) in range(22,26) and int(y) in range(5,9):
+	if game.checkIntersectsRect(player.pos,(21,5,26,9)):
 		if "counter1" in game.data.keys():
 			counter=game.data["counter1"]
 		else: counter=0
@@ -30,4 +30,4 @@ def main():
 	if y>30:
 		game.loadLevel("$LEVEL/caves/open-air/index")
 		# exit between x=16 and x=25, enter between x=47 and x=56
-		game.setPos(x+47-16,y+2-30)
+		game.setPos(x+48-16,y+2-30)

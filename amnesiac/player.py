@@ -1,6 +1,7 @@
 
 from pyglet.window import key
 import json
+from amnesiac.util import pathrep
 from amnesiac.globs import GAME_FOLDER
 
 class Player:
@@ -20,7 +21,7 @@ class Player:
     def move(self, x, y):
         self.pos = x, y
 
-    def loadgame(self, fname="$DATA/saves/save/save"):
+    def loadgame(self, fname="$DATA/saves/save/save.json"):
         self.pos = [0, 0]
         self.level = "$DATA/level/index/index"
         self.has_loaded_level = False
@@ -34,7 +35,8 @@ class Player:
         except:
             pass
 
-    def savegame(self, fname=GAME_FOLDER + "/saves/save/save.json"):
+    def savegame(self, fname="$DATA/saves/save/save.json"):
+        fname = pathrep(fname)
         j = {"pos":self.pos,"level":self.level,"has_loaded_level":True}
         try:
             os.makedirs(fname.rsplit("/", maxsplit=1)[0])

@@ -1,3 +1,4 @@
+from unittest.test.testmock.support import target
 
 game = []
 
@@ -43,6 +44,23 @@ class Game:
         rv = self.data
         self.data = self._stack.pop(-1)
         return rv
+
+    def checkIntersectsRect(self,check_pos,target_pos,tolerance=0.1):
+        x,y = check_pos
+        x1,y1,x2,y2 = target_pos
+        t = tolerance/2
+        return x+t>=x1 and x-t<=x2 and y+t>=y1 and y-t<=y2
+
+    def checkIntersectsPoint(self,check_pos,target_pos,tolerance=0.1):
+        return self.getDistance(check_pos,target_pos)<=tolerance
+
+    def checkIntersectsTile(self,check_pos,target_pos,tolerance=0.45):
+        return self.getDistance(check_pos,target_pos)<=tolerance
+
+    def getDistance(self,check_pos,target_pos):
+        x,y = check_pos
+        x1,y1 = target_pos
+        return self.model.getDistance(x,y,x1,y1)
 
     def loadLevel(self, fname):
         """
