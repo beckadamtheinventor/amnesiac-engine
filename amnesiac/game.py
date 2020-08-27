@@ -1,4 +1,3 @@
-from unittest.test.testmock.support import target
 
 game = []
 
