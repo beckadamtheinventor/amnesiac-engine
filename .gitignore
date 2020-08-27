@@ -10,3 +10,4 @@
 /amnesiac_engine.egg-info
 *.pyc
 */__pycache__
+*/saves

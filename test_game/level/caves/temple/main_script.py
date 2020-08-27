@@ -1,6 +1,7 @@
 
 from pyglet.window import key
-from amnesiac.game import game
+from amnesiac.game import getGameObject
+game = getGameObject()
 
 def init():
     if "entered_text" not in game.data.keys():

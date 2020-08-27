@@ -1,7 +1,8 @@
 
 from pyglet.window import key
 import random
-from amnesiac.game import game
+from amnesiac.game import getGameObject
+game = getGameObject()
 
 COUNTER="nexus-count"
 

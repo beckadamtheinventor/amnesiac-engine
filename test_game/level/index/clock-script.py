@@ -1,13 +1,14 @@
 
 from pyglet.window import key
-from amnesiac.game import game
 import time,math
+from amnesiac.game import getGameObject
+game = getGameObject()
 
 
-def init(game):
+def init():
 	pass
 
-def main(game):
+def main():
 	model=game.model
 	player=game.player
 	keys=game.keys

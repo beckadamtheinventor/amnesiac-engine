@@ -45,12 +45,10 @@ class Model:
         self.renderMode = 0
         self._keyhandlers = {}
 
-    def set_game(self, game):
-        self.game = game
 
     def exit_level(self):
         for script in self.scripts:
-            script.run_save(self.game)
+            script.run_save()
         self.scripts.clear()
         self.entities.clear()
         try:
@@ -123,7 +121,7 @@ class Model:
                 self.x, self.y = x, y
         self.runScriptMains()
         for entity in self.entities:
-            entity.update(self.game)
+            entity.update()
 
     def checkColided(self, vx, vy):
         self.targetMap(0)
@@ -229,7 +227,8 @@ class Model:
         return self.image
 
     def draw(self):
-        self.size_x, self.size_y = self.game.window.get_size()
+        game = getGameObject()
+        self.size_x, self.size_y = game.window.get_size()
         self.scale = min(self.size_x, self.size_y) // 15
         if self.renderMode == 0:
             self.get_tiles([self.x, self.y])
@@ -242,9 +241,9 @@ class Model:
         elif self.renderMode == 1:
             self.image.blit(self.image_x, self.image_y)
         for entity in self.entities:
-            entity.draw(self.game)
+            entity.draw()
         for script in self.scripts:
-            script.run_draw(self.game)
+            script.run_draw()
         for item in self._draw_next:
             item.draw()
         self._draw_next.clear()

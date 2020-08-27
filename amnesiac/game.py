@@ -1,11 +1,13 @@
 
+game = []
 
 class Game:
     """
     Main engine interface class.
     Initialized internally.
     User scripts can access the main instance of this class with the following:
-        from amnesiac.game import game
+        from amnesiac.game import getGameObject
+        game = getGameObject()
     """
 
     def __init__(self, model, player, keys, window):
@@ -236,9 +238,11 @@ class Game:
     def setKeyHandler(self,key,func):
         self.model.setKeyHandler(key,func)
 
+def getGameObject():
+    return game[0]
 
 def makeGameObject(model, player, keys, window):
-    global game
-    game = Game(model, player, keys, window)
-    return game
+    g = Game(model, player, keys, window)
+    game.append(g)
+    return g
 

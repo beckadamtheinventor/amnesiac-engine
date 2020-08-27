@@ -1,6 +1,7 @@
 
 from pyglet.window import key
-from amnesiac.game import game
+from amnesiac.game import getGameObject
+game = getGameObject()
 
 class Ghost:
 	def __init__(self):
