@@ -46,18 +46,48 @@ class Game:
         return rv
 
     def checkIntersectsRect(self,check_pos,target_pos,tolerance=0.1):
+        """
+        Check if a given coordinate pair lies within a rectangle
+        :param check_pos: position to check. list/tuple (x,y)
+        :param target_pos: coordinates of rectangle. list/tuple (x1,y1,x2,y2)
+        :param tolerance: How far to extend the bounds of the rectangle. Defaults to 0.1.
+        :return: True/False whether the coordinates lie within the rectangle
+        """
         x,y = check_pos
         x1,y1,x2,y2 = target_pos
         t = tolerance/2
         return x+t>=x1 and x-t<=x2 and y+t>=y1 and y-t<=y2
 
     def checkIntersectsPoint(self,check_pos,target_pos,tolerance=0.1):
+        """
+        Check if a given coordinate pair lies within range of a point
+        :param check_pos: position to check. list/tuple (x,y)
+        :param target_pos: coordinates of point. list/tuple (x,y)
+        :param tolerance: Radius of point.
+        :return: True/False whether the coordinates lie close enough to the point.
+        """
         return self.getDistance(check_pos,target_pos)<=tolerance
 
     def checkIntersectsTile(self,check_pos,target_pos,tolerance=0.45):
-        return self.getDistance(check_pos,target_pos)<=tolerance
+        """
+        Check if a given coordinate pair lies within range of a tile. This checks from the center of the tile.
+        Useful for click objects.
+        :param check_pos: position to check. list/tuple (x,y)
+        :param target_pos: coordinates of tile. list/tuple (x,y)
+        :param tolerance: How close to the tile the coordinate has to be. Defaults to 0.45. (0.05 from edge of tile)
+        :return: True/False whether the coordinates lie close enough to the center of the tile.
+        """
+        x,y = check_pos
+        x+=0.5; y+=0.5
+        return self.getDistance((x,y),target_pos)<=tolerance
 
     def getDistance(self,check_pos,target_pos):
+        """
+        Return distance between check_pos and target_pos. Equivalent to sqrt(abs(Ax-Bx)**2+abs(Ay-By)**2).
+        :param check_pos: position A. list/tuple (x,y)
+        :param target_pos: position B. list/tuple (x,y)
+        :return: distance between positions A and B.
+        """
         x,y = check_pos
         x1,y1 = target_pos
         return self.model.getDistance(x,y,x1,y1)
