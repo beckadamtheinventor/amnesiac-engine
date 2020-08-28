@@ -12,7 +12,7 @@ def main():
 		game.loadLevel("$LEVEL/caves/main/index")
 		game.setPos(71+x-7,y)
 	#y=31 between x=29 and x=30
-	elif game.checkIntersectsRect(player.pos,(43,33.5,44,30)):
+	elif game.checkIntersectsRect(player.pos,(43,32,44,33)):
 		if game.keys[key.SPACE]:
 			game.loadLevel("$LEVEL/caves/temple/index")
 			game.setPos(15.5,60.5)

@@ -67,7 +67,7 @@ class Game:
         """
         return self.getDistance(check_pos,target_pos)<=tolerance
 
-    def checkIntersectsTile(self,check_pos,target_pos,tolerance=0.45):
+    def checkIntersectsTile(self,check_pos,target_pos,tolerance=0.55):
         """
         Check if a given coordinate pair lies within range of a tile. This checks from the center of the tile.
         Useful for click objects.
@@ -77,7 +77,7 @@ class Game:
         :return: True/False whether the coordinates lie close enough to the center of the tile.
         """
         x,y = check_pos
-        x+=0.5; y+=0.5
+        y+=1
         return self.getDistance((x,y),target_pos)<=tolerance
 
     def getDistance(self,check_pos,target_pos):

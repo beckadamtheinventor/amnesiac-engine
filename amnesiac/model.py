@@ -9,18 +9,19 @@ from amnesiac.script import *
 from amnesiac.entity import *
 from amnesiac.game import *
 from amnesiac.util import *
-
+import xml.etree.ElementTree as ET
 
 
 class Model:
     def __init__(self, level=None):
         self._cutstack = []
         self._levelstack = []
-        self.batch = [pyglet.graphics.Batch() for N in range(8)]
+        self.batch = pyglet.graphics.Batch()
+        self.draw_next_batch = pyglet.graphics.Batch()
+        self.group = [pyglet.graphics.OrderedGroup(N) for N in range(8)]
         self.none_tex = self.get_tex(GFX_FOLDER + "/tex/tex_None.png")
         self.none_tileset = {"-1": self.none_tex}
-        self.sprites = [pyglet.sprite.Sprite(self.none_tex, batch=self.batch[N // (25 * 25)], x=-1000, y=-1000) for N in
-                        range(25 * 25 * 8)]
+        self.sprites = [pyglet.sprite.Sprite(self.none_tex, batch=self.batch, group=self.group[N // (25 * 25)], x=-1000, y=-1000) for N in range(25 * 25 * 8)]
         self.x = self.y = 0
         self.level_name = level
         self.drawPlayer = True
@@ -50,9 +51,12 @@ class Model:
         for script in self.scripts:
             script.run_save()
         self.scripts.clear()
+        for entity in self.entities:
+            entity.script.run_save()
         self.entities.clear()
         try:
-            del self.tileset
+            for spr in self.sprites:
+                spr.update(x=-1000,y=-1000)
             del self.level
         except:
             pass
@@ -66,18 +70,20 @@ class Model:
             script.run_init()
 
     def load_level(self, fname):
-        try:
-            self.exit_level()
-        except:
-            pass
+        self.exit_level()
         self.tileset = self.none_tileset
         self.level = {"list": [], "start": [0, 0]}
+        self.load_index(fname)
+
+    def load_index(self,fname):
         p = ""
         with open(pathrep(fname)) as f:
             data = f.read().splitlines()
         for line in data:
-            if line.startswith("map:"):
-                with open(p + line[4:]) as f:
+            if line.startswith("index:"):
+                self.load_index(pathrep(line[6:]))
+            elif line.startswith("map:"):
+                with open(pathrep(p + line[4:])) as f:
                     level = {}
                     level["area"] = m = [[int(c) for c in l.split(",")] for l in f.read().splitlines()]
                     level["height"] = len(m)
@@ -226,14 +232,16 @@ class Model:
     def getImage(self):
         return self.image
 
+    def entityGroup(self):
+        return self.entity_group
+
     def draw(self):
         game = getGameObject()
         self.size_x, self.size_y = game.window.get_size()
         self.scale = min(self.size_x, self.size_y) // 15
         if self.renderMode == 0:
             self.get_tiles([self.x, self.y])
-            for i in range(len(self.level["list"])):
-                self.batch[i].draw()
+            self.batch.draw()
             if self.drawPlayer:
                 self.playersprite.x = self.size_x / 2 - 16
                 self.playersprite.y = self.size_y / 2 - 16
@@ -244,9 +252,9 @@ class Model:
             entity.draw()
         for script in self.scripts:
             script.run_draw()
-        for item in self._draw_next:
-            item.draw()
+        self.draw_next_batch.draw()
         self._draw_next.clear()
+        self.draw_next_batch.invalidate()
 
     def draw_item_scale(self, x=1, y=None):
         if y is None:
@@ -258,7 +266,7 @@ class Model:
             self._draw_next_scale = x
 
     def draw_sprite(self, img, x=0, y=0):
-        spr = pyglet.sprite.Sprite(img, x, y)
+        spr = pyglet.sprite.Sprite(img, x, y, batch=self.draw_next_batch)
         if self._draw_next_scale is None:
             x, y = self._draw_next_scale_xy
         else:
