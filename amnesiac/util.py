@@ -9,3 +9,13 @@ def pathrep(p):
     """
     return p.replace("$GFX", GFX_FOLDER).replace("$DATA", GAME_FOLDER).replace("$LEVEL", GAME_FOLDER + "/level")
 
+
+def fwalk(directory):
+    from os import walk
+    for root, dirs, files in walk(directory):
+        for f in files:
+            yield directory+"/"+f
+        for d in dirs:
+            for fname in fwalk(directory+"/"+d):
+                yield fname
+
