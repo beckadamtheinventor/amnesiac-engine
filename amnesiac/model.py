@@ -28,7 +28,7 @@ class Model:
         self.lockPlayer = False
         self.playeratlas = []
         self.scripts = []
-        self.entities = []
+        self.entities = {}
         self._draw_next = []
         self._draw_next_scale = 1
         self._draw_next_scale_xy = [1, 1]
@@ -46,14 +46,54 @@ class Model:
         self.renderMode = 0
         self._keyhandlers = {}
 
+    def loadEntity(self, fname, id=0):
+        """
+        Find an entity or create one if it does not exist. Use this to create entities instead of Game.createEntity.
+        :param fname: entity script file.
+        :param id: entity ID.
+        :return: existing or new entity object.
+        """
+        name = fname + "/." + str(id)
+        if name not in self.entities.keys():
+            return self.createEntity(fname, id)
+        return self.entities[name]
+
+    def createEntity(self, fname, id=0):
+        """
+        Create an entity from an entity script file and an ID.
+        :param fname: entity script file.
+        :param id: entity ID.
+        :return: new entity object.
+        """
+        name = fname + "/." + str(id)
+        ent = Entity(Script(fname))
+        self.entities[name] = ent
+        return ent
+
+    def destroyEntity(self, fname, id=0):
+        """
+        Delete an entity.
+        :param fname: entity script file.
+        :param id: entity ID.
+        :return: True if success, otherwise False.
+        """
+        name = fname + "/." + str(id)
+        if name in self.entities.keys():
+            self.remove_entity(fname, id)
+            return True
+        return False
+
+    def remove_entity(self, fname, id=0):
+        name = fname + "/." + str(id)
+        del self.entities[name]
 
     def exit_level(self):
         for script in self.scripts:
             script.run_save()
         self.scripts.clear()
-        for entity in self.entities:
-            entity.script.run_save()
-        self.entities.clear()
+        for entity in self.entities.keys():
+            self.entities[entity].script.run_save()
+        self.entities = {}
         try:
             for spr in self.sprites:
                 spr.update(x=-1000,y=-1000)
@@ -104,9 +144,6 @@ class Model:
                     self.solids.append(int(w))
         self.targetMap(0)
 
-    def add_entity(self, entity):
-        self.entities.append(entity)
-
     def update(self, vx, vy, keys):
         x = vx + self.x
         y = vy + self.y
@@ -126,7 +163,7 @@ class Model:
             if not self.checkColided(vx, vy):
                 self.x, self.y = x, y
         self.runScriptMains()
-        for entity in self.entities:
+        for entity in self.entities.values():
             entity.update()
 
     def checkColided(self, vx, vy):
@@ -143,12 +180,6 @@ class Model:
     def setPos(self, x, y):
         self.x = x
         self.y = y
-
-    def addEntity(self, ent):
-        self.entities.append(ent)
-
-    def removeEntity(self, ent):
-        self.entities.remove(ent)
 
     def getDistance(self, x1, y1, x2=None, y2=None):
         if x2 == None: x2 = self.x
@@ -248,7 +279,7 @@ class Model:
                 self.playersprite.draw()
         elif self.renderMode == 1:
             self.image.blit(self.image_x, self.image_y)
-        for entity in self.entities:
+        for entity in self.entities.values():
             entity.draw()
         for script in self.scripts:
             script.run_draw()

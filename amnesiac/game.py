@@ -1,4 +1,8 @@
 
+from amnesiac.entity import Entity
+from amnesiac.script import Script
+from amnesiac.util import pathrep
+
 game = []
 
 class Game:
@@ -149,10 +153,7 @@ class Game:
         :param id: entity ID.
         :return: existing or new entity object.
         """
-        name = fname + "/." + str(id)
-        if name not in self.entities.keys():
-            return self.createEntity(fname, id)
-        return self.entities[name]
+        return self.model.loadEntity(fname, id)
 
     def createEntity(self, fname, id=0):
         """
@@ -161,11 +162,7 @@ class Game:
         :param id: entity ID.
         :return: new entity object.
         """
-        name = fname + "/." + str(id)
-        ent = Entity(Script(fname), game=self)
-        self.entities[name] = ent
-        self.model.add_entity(ent)
-        return ent
+        return self.model.createEntity(fname, id)
 
     def destroyEntity(self, fname, id=0):
         """
@@ -174,12 +171,7 @@ class Game:
         :param id: entity ID.
         :return: True if success, otherwise False.
         """
-        name = fname + "/." + str(id)
-        if name in self.entities.keys():
-            self.model.remove_entity(self.entities[name])
-            del self.entities[name]
-            return True
-        return False
+        return self.model.destroyEntity(fname, id)
 
     def setTileRenderMode(self):
         """

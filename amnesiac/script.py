@@ -1,6 +1,5 @@
 
 import os.path
-from amnesiac.game import getGameObject
 from amnesiac.util import *
 from amnesiac.globs import *
 
@@ -26,12 +25,14 @@ class Script:
             self.data = {}
 
     def run_init(self):
+        from amnesiac.game import getGameObject
         game = getGameObject()
         game._data[self.fname] = self.data
         self.data["_time_main"] = self.data["_time_draw"] = time.time()
         self.run_func("init")
 
     def run_main(self):
+        from amnesiac.game import getGameObject
         game = getGameObject()
         t = time.time()
         game.dt = t - self.data["_time_main"]
@@ -39,6 +40,7 @@ class Script:
         self.run_func("main")
 
     def run_draw(self):
+        from amnesiac.game import getGameObject
         game = getGameObject()
         t = time.time()
         game.dt = t - self.data["_time_draw"]
@@ -46,6 +48,7 @@ class Script:
         self.run_func("draw")
 
     def run_save(self):
+        from amnesiac.game import getGameObject
         game = getGameObject()
         self.run_func("save")
         try:
@@ -56,6 +59,7 @@ class Script:
             json.dump(self.data, f)
 
     def run_func(self, func):
+        from amnesiac.game import getGameObject
         game = getGameObject()
         game.push(game._data[self.fname])
         if hasattr(self.module, func):
