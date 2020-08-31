@@ -34,7 +34,7 @@ class BuildTarget:
             self.files[file] = {"file":file, "name":os.path.splitext(file)[0], "format":os.path.splitext(file)[1]}
         return self.files
 
-    def build(self,bin):
+    def build(self, bin):
         self.lf = open("log.txt", 'w')
         from zipfile import ZipFile
         from shutil import copytree
