@@ -5,4 +5,7 @@ if __name__=='__main__':
         os.system("python setup.py build")
     except:
         pass
-    os.system(f"pip install {os.path.dirname(__file__)}")
+    f = os.path.dirname(__file__)
+    if not len(f):
+        f = "."
+    os.system(f"pip install {f}")
