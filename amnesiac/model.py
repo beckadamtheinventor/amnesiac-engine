@@ -308,7 +308,7 @@ class Model:
         return len(self._draw_next)
 
     def get_tiles(self, pos):
-        x = int(pos[0]);
+        x = int(pos[0])
         y = int(pos[1])
         fx = (self.x - int(self.x)) * self.scale
         fy = -((self.y - 1) - int(self.y)) * self.scale
