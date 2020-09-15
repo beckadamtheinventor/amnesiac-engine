@@ -1,8 +1,0 @@
-index:$DATA/tile-index
-index:$DATA/solids-index
-path:$LEVEL/index
-map:nexus_main.csv
-map:nexus_text.csv
-start:8,8
-script:main-script.py
-script:clock-script.py

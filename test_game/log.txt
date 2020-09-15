@@ -1,0 +1,27 @@
+searching for sources...
+Warning: Ignoring blacklisted source type for build target eZ80: ..\test_game\level\caves\main/ghost-script.py
+Warning: Ignoring blacklisted source type for build target eZ80: ..\test_game\level\caves\main/main-script.py
+Warning: Ignoring blacklisted source type for build target eZ80: ..\test_game\level\caves\main\__pycache__/main-script.cpython-38.pyc
+Warning: Ignoring blacklisted source type for build target eZ80: ..\test_game\level\caves\open-air/main-script.py
+Warning: Ignoring blacklisted source type for build target eZ80: ..\test_game\level\caves\open-air\__pycache__/main-script.cpython-38.pyc
+Warning: Ignoring blacklisted source type for build target eZ80: ..\test_game\level\caves\temple/main_script.py
+Warning: Ignoring blacklisted source type for build target eZ80: ..\test_game\level\caves\temple\__pycache__/main_script.cpython-38.pyc
+Warning: Ignoring blacklisted source type for build target eZ80: ..\test_game\level\index/clock-script.py
+Warning: Ignoring blacklisted source type for build target eZ80: ..\test_game\level\index/interface-script.py
+Warning: Ignoring blacklisted source type for build target eZ80: ..\test_game\level\index/main-script.py
+Warning: Ignoring blacklisted source type for build target eZ80: ..\test_game\level\index\__pycache__/clock-script.cpython-38.pyc
+Warning: Ignoring blacklisted source type for build target eZ80: ..\test_game\level\index\__pycache__/main-script.cpython-38.pyc
+building sprites...
+building tilemaps...
+Scanning ..\test_game/level/caves/main/main.csv
+Scanning ..\test_game/level/caves/open-air/open-air.csv
+Scanning ..\test_game/level/caves/temple/temple_main.csv
+Scanning ..\test_game/level/caves/temple/temple_text.csv
+Scanning ..\test_game/level/index/
+Failed to open ..\test_game/level/index/
+Building ..\test_game/level/caves/main/main.csv
+Building ..\test_game/level/caves/open-air/open-air.csv
+Building ..\test_game/level/caves/temple/temple_main.csv
+Building ..\test_game/level/caves/temple/temple_text.csv
+Building ..\test_game/level/index/
+Failed to open ..\test_game/level/index/

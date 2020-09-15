@@ -1,0 +1,22 @@
+
+index:
+ $DATA/tile-index
+ $DATA/solids-index
+
+path:$LEVEL/index
+map:
+ nexus_main.csv
+ nexus_text.csv
+
+
+#default (python) build target
+target:default
+path:$LEVEL/index
+script:main-script.py
+script:clock-script.py
+
+#ez80 build target
+target:ez80
+path:$LEVEL/index
+script:main-script.asm
+script:clock-script.asm

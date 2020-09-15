@@ -12,7 +12,7 @@ if __name__=='__main__':
     datadir = os.getcwd()+"/"+sys.argv[1]
     basepath = os.path.dirname(fname)
     scriptpath = os.path.dirname(__file__)
-    ofile = scriptpath+"/tile-index"
+    ofile = scriptpath+"/tile-index.aex"
 
     try:
         tree = ET.parse(fname)

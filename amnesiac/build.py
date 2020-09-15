@@ -1,5 +1,5 @@
 
-import os,sys
+import os,sys,json
 from amnesiac.util import fwalk
 
 
@@ -21,6 +21,24 @@ class BuildTarget:
         sys.stdout = stdout
         print(*args,**kwargs)
 
+    def load_cache(self):
+        try:
+            with open(self.directory + "/cache") as f:
+                self.cache = json.load(f)
+        except IOError:
+            self.cache = self.properties
+            return None
+        for key in self.cache.keys():
+            if key not in self.properties.keys():
+                self.properties[key] = self.cache[key]
+
+    def save_cache(self):
+        try:
+            with open(self.directory + "/cache","w") as f:
+                json.dump(self.properties,f)
+        except IOError:
+            pass
+
     def locate_sources(self,directory=None):
         if directory is None:
             directory = self.directory
@@ -34,6 +52,9 @@ class BuildTarget:
             self.files[file] = {"file":file, "name":os.path.splitext(file)[0], "format":os.path.splitext(file)[1]}
         return self.files
 
+    def pathrep(self,p):
+        return p.replace("$GFX",f"{self.directory}/gfx").replace("$LEVEL",f"{self.directory}/level").replace("$DATA",self.directory)
+
     def build(self, bin):
         self.lf = open("log.txt", 'w')
         from zipfile import ZipFile
@@ -42,7 +63,7 @@ class BuildTarget:
             self.locate_sources()
         if os.path.splitext(bin)[1] == '.zip':
             with ZipFile(bin,"w") as f:
-                for file in self.files:
+                for file in self.files.keys():
                     f.write(file)
         else:
             copytree(self.directory,bin+"/data")

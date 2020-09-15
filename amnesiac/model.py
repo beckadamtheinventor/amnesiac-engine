@@ -9,7 +9,6 @@ from amnesiac.script import *
 from amnesiac.entity import *
 from amnesiac.game import *
 from amnesiac.util import *
-import xml.etree.ElementTree as ET
 
 
 class Model:
@@ -116,19 +115,36 @@ class Model:
         self.load_index(fname)
 
     def load_index(self,fname):
-        p = ""
-        with open(pathrep(fname)) as f:
-            data = f.read().splitlines()
+        self._cur_path = ""
+        try:
+            with open(pathrep(fname)) as f:
+                data = f.read().splitlines()
+        except IOError:
+            with open(pathrep(fname)+".aex") as f:
+                data = f.read().splitlines()
+        self._cur_target = "default"
+        self._prev_line = "#"
         for line in data:
+            if not line.startswith("#"):
+                if line.startswith(" ") or line.startswith("\t"):
+                    self._load_line(self._prev_line+line.lstrip(" \t"))
+                else:
+                    self._load_line(line)
+
+        self.targetMap(0)
+
+    def _load_line(self,line):
+        if len(line.split(":",maxsplit=1)[1]):
             if line.startswith("index:"):
                 self.load_index(pathrep(line[6:]))
             elif line.startswith("map:"):
-                with open(pathrep(p + line[4:])) as f:
-                    level = {}
-                    level["area"] = m = [[int(c) for c in l.split(",")] for l in f.read().splitlines()]
-                    level["height"] = len(m)
-                    level["width"] = len(m[0])
-                    self.level["list"].append(level)
+                try:
+                    with open(pathrep(self._cur_path + line[4:])) as f:
+                        m = [[int(c) for c in l.split(",")] for l in f.read().splitlines()]
+                except IOError:
+                    with open(pathrep(self._cur_path + line[4:])+".csv") as f:
+                        m = [[int(c) for c in l.split(",")] for l in f.read().splitlines()]
+                self.level["list"].append({"area":m, "height":len(m), "width": len(m[0])})
             elif line.startswith("tex:"):
                 w = line[4:].split(",", maxsplit=1)
                 self.tileset[w[0]] = self.get_tex(pathrep(p + w[1]))
@@ -136,13 +152,20 @@ class Model:
                 c = line[6:].split(",")
                 self.level["start"] = [int(c[0]), int(c[1])]
             elif line.startswith("path:"):
-                p = pathrep(line[5:] + "/")
+                self._cur_path = pathrep(line[5:] + "/")
             elif line.startswith("script:"):
-                self.scripts.append(Script(pathrep(p + line[7:])))
+                if self._cur_target == "default":
+                    self.scripts.append(Script(pathrep(p + line[7:])))
             elif line.startswith("solid:"):
                 for w in line[6:].split(","):
                     self.solids.append(int(w))
-        self.targetMap(0)
+            elif line.startswith("target:"):
+                self._cur_target = line[7:]
+            else:
+                return False
+        else:
+            self._prev_line = line
+        return True
 
     def update(self, vx, vy, keys):
         x = vx + self.x
@@ -327,6 +350,6 @@ class Model:
                         spr.update(scale=self.scale / 32, x=X - fx, y=Y - fy)
                     else:
                         spr.update(x=-1000, y=-1000)
-                    X += self.scale;
+                    X += self.scale
                     i += 1
                 Y -= self.scale
