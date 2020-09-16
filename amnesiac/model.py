@@ -147,7 +147,7 @@ class Model:
                 self.level["list"].append({"area":m, "height":len(m), "width": len(m[0])})
             elif line.startswith("tex:"):
                 w = line[4:].split(",", maxsplit=1)
-                self.tileset[w[0]] = self.get_tex(pathrep(p + w[1]))
+                self.tileset[w[0]] = self.get_tex(pathrep(self._cur_path + w[1]))
             elif line.startswith("start:"):
                 c = line[6:].split(",")
                 self.level["start"] = [int(c[0]), int(c[1])]
@@ -155,7 +155,7 @@ class Model:
                 self._cur_path = pathrep(line[5:] + "/")
             elif line.startswith("script:"):
                 if self._cur_target == "default":
-                    self.scripts.append(Script(pathrep(p + line[7:])))
+                    self.scripts.append(Script(pathrep(self._cur_path + line[7:])))
             elif line.startswith("solid:"):
                 for w in line[6:].split(","):
                     self.solids.append(int(w))

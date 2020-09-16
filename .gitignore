@@ -10,3 +10,5 @@
 *.pyc
 */__pycache__
 */saves
+*/cache
+*/log.txt

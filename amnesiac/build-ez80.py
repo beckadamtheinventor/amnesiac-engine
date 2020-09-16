@@ -20,6 +20,10 @@ class EZ80(BuildTarget):
     def build(self, bin):
         from sys import stdout
         os.chdir(self.directory)
+        try:
+            os.makedirs("ez80-bin")
+        except IOError:
+            pass
         self.lf = open("log.txt",'w')
         self.log("searching for sources...")
         if not len(self.files.keys()):
@@ -54,7 +58,7 @@ class EZ80(BuildTarget):
 
         # build graphics
         self.log("building sprites...")
-        img_list = "\n        - ".join([os.path.relpath(path,self.directory).replace("\\","/") for path in self.images])
+        img_list = "\n        - ".join([path[1:] for path in self.images])
         with open("convimg.yaml",'w') as f:
             f.write(f"""
 converts:
@@ -68,10 +72,9 @@ outputs:
       converts:
         - myimages
       name: {self.properties["gfx_appvar"]}
-      directory: {self.directory}
+      directory: {self.directory}/ez80-bin
       archived: true
       compress: zx7
-      header-string: "amnegfx\\0\\0"
 """)
         os.system("convimg")
 
@@ -121,16 +124,51 @@ outputs:
         with open("tilemaps.bin","wb") as f:
             f.write(bytes(self.map_output))
 
+        os.system(f"convbin -i tilemaps.bin -o ez80-bin/{self.properties['tile_appvar']}.8xv -j bin -k 8xv \
+-n {self.properties['tile_appvar']}")
 
+        os.remove("tilemaps.bin")
+        #os.remove("convimg.yaml")
+        os.remove("temp.bin")
+        os.remove("temp_output.bin")
 
         # build other data
 
-        # use convbin to build data into appvars
         # build scripts
+        for script in self.script_files:
+            ext = os.path.splitext(script)[1]
+            if ext in [".script", ".amne"]:
+                self._build_script(script)
         # build assembly source files
+        self._script_data = []
+        for script in self.script_files:
+            ext = os.path.splitext(script)[1]
+            if ext in [".asm", ".ez80"]:
+                try:
+                    with open(script) as f:
+                        data = f.read()
+                except IOError:
+                    continue
+                self._script_data.append(data)
+        try:
+            with open("ez80-build/obj/asm-scripts.asm",'w') as f:
+                f.write("\n\n\n".join(self._script_data))
+        except IOError:
+            self.log("Failed to write asm object: ez80-build/obj/asm-scripts.asm")
+            self.lf.close()
+            return
+
         # integrate engine source routines
+        import git
+        git.Git(self.directory).clone("")
+
+
         # use fasmg to build the executable
+        os.system(f"fasmg ez80-build/obj/main.asm ez80-build/X{self.properties['unique_name']}.8xp")
         self.lf.close()
+
+    def _build_script(self, fname):
+        pass
 
     def _load_index(self,fname):
         try:
