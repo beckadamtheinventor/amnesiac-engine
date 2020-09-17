@@ -1,0 +1,33 @@
+body{
+	color: white;
+	background-color: black;
+}
+h1 {
+	color: #0A0;
+	background-color: #225;
+}
+h2 {
+	background-color: #114;
+}
+h3 {
+	background-color: #111;
+}
+.version{
+	color: #3F3;
+	background-color: #115;
+}
+.description{
+	color: #F99;
+	background-color: #111;
+}
+.code {
+	color: #282;
+	background-color: #112;
+	padding: 1%;
+	margin-left: 4%;
+	width: 30%;
+}
+.code-inline {
+	color: #282;
+	background-color: #112;
+	padding: 2px 10px 2px 10px;

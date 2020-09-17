@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="css/style.css"/>
+		<title>Amnesiac Engine Docs</title>
+	</head>
+	<body>
+		<h1>Amnesiac Engine Documentation</h1>
+		<p>
+			The Amnesiac Engine is a 2D, sprite-based game engine.<br>
+			This documentation primarily targets version <a class="version">0.1.5 alpha</a> and up of the engine.
+		</p>
+		<br>
+		<h2>Running the engine</h2>
+		<p>
+			To run the engine, (assuming it's installed correctly) all you need is to create a launch script as follows.<br>
+			<a class="code-inline">game_path</a> is the path to the game data folder, relative to the launch script. It is reccommended to have the launch script as well as the game data in the same directory.<br>
+			<div class="code">
+				import os<br>
+				from amnesiac.engine import RunEngine<br>
+				RunEngine(game_path, os.path.dirname(__file__))<br>
+			</div>
+		</p>
+
+
+		<br><br><h2>Modules</h2>
+
+		<h3>amnesiac.engine</h3>
+		<a class="description">Primarily used to run the engine.</a>
+
+		<h3>amnesiac.entity</h3>
+		<a class="description">Handles entity instantiation and processing.</a>
+
+		<h3>amnesiac.game</h3>
+		<a class="description">Primary engine interface objects and functions.</a>
+
+		<h3>amnesiac.globs</h3>
+		<a class="description">Engine global variables, such as game states.</a>
+
+		<h3>amnesiac.model</h3>
+		<a class="description">Engine level and rendering module.</a>
+
+		<h3>amnesiac.player</h3>
+		<a class="description">Player data storage and related functions.</a>
+
+		<h3>amnesiac.script</h3>
+		<a class="description">Handles user scripts.</a>
+
+		<h3>amnesiac.util</h3>
+		<a class="description">Utility functions.</a>
+
+		<h3>amnesiac.window</h3>
+		<a class="description">The game window class is defined here.</a>
+
+
+		<br><br><h2>Classes</h2>
+
+		<h3>amnesiac.entity.Entity</h3>
+		<a class="description">Entity creation/instantiation class.</a>
+
+		<h3>amnesiac.game.Game</h3>
+		<a class="description">Engine interface class. Contains game state info, manages user scripts, exposes game interfacing methods.</a>
+
+		<h3>amnesiac.model.Model</h3>
+
+		<h3>amnesiac.player.Player</h3>
+
+	</body>
+</html>
